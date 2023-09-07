@@ -286,3 +286,44 @@ float acos_nvidia4(float x) {
   ret *= sqrtf(1.0f-x);
   return ret + negate * (3.14159265358979f - 2.0f * ret);
 }
+
+/// 0x0000555555555900 <+0>:     endbr64
+/// 0x0000555555555904 <+4>:     sub    $0x18,%rsp
+/// 0x0000555555555908 <+8>:     vmovaps %xmm0,%xmm3
+/// 0x000055555555590c <+12>:    vandps 0x84c(%rip),%xmm3,%xmm0        # 0x555555556160
+/// 0x0000555555555914 <+20>:    vmovss 0x82c(%rip),%xmm1        # 0x555555556148
+/// 0x000055555555591c <+28>:    vmovss 0x820(%rip),%xmm5        # 0x555555556144
+/// 0x0000555555555924 <+36>:    vfmadd213ss 0x81f(%rip),%xmm0,%xmm1        # 0x55555555614c
+/// 0x000055555555592d <+45>:    vxorps %xmm4,%xmm4,%xmm4
+/// 0x0000555555555931 <+49>:    vfmadd213ss 0x816(%rip),%xmm0,%xmm1        # 0x555555556150
+/// 0x000055555555593a <+58>:    vfmadd213ss 0x811(%rip),%xmm0,%xmm1        # 0x555555556154
+/// 0x0000555555555943 <+67>:    vsubss %xmm0,%xmm5,%xmm0
+/// 0x0000555555555947 <+71>:    vucomiss %xmm0,%xmm4
+/// 0x000055555555594b <+75>:    ja     0x55555555597b <acos_nvidia5+123>
+/// 0x000055555555594d <+77>:    vsqrtss %xmm0,%xmm0,%xmm0
+/// 0x0000555555555951 <+81>:    vmulss %xmm0,%xmm1,%xmm2
+/// 0x0000555555555955 <+85>:    vmovss 0x7ff(%rip),%xmm0        # 0x55555555615c
+/// 0x000055555555595d <+93>:    vcmpltss %xmm4,%xmm3,%xmm3
+/// 0x0000555555555962 <+98>:    vfnmadd213ss 0x7ed(%rip),%xmm2,%xmm0        # 0x555555556158
+/// 0x000055555555596b <+107>:   vblendvps %xmm3,%xmm5,%xmm4,%xmm4
+/// 0x0000555555555971 <+113>:   add    $0x18,%rsp
+/// 0x0000555555555975 <+117>:   vfmadd132ss %xmm4,%xmm2,%xmm0
+/// 0x000055555555597a <+122>:   ret
+/// 0x000055555555597b <+123>:   vmovss %xmm3,0xc(%rsp)
+/// 0x0000555555555981 <+129>:   vmovss %xmm1,0x8(%rsp)
+/// 0x0000555555555987 <+135>:   call   0x5555555550d0 <sqrtf@plt>
+/// 0x000055555555598c <+140>:   vmovss 0x7b0(%rip),%xmm5        # 0x555555556144
+/// 0x0000555555555994 <+148>:   vmovss 0xc(%rsp),%xmm3
+/// 0x000055555555599a <+154>:   vmovss 0x8(%rsp),%xmm1
+/// 0x00005555555559a0 <+160>:   vxorps %xmm4,%xmm4,%xmm4
+/// 0x00005555555559a4 <+164>:   jmp    0x555555555951 <acos_nvidia5+81>
+float acos_nvidia5(float x) {
+  float x0 = x;
+  x = fabsf(x);
+  float ret = -0.0187293f;
+  ret = ret * x + 0.0742610f;
+  ret = ret * x - 0.2121144f;
+  ret = ret * x + 1.5707288f;
+  ret *= sqrtf(1.0f - x);
+  return ret + (float)(x0 < 0.0f) * (3.14159265358979f - 2.0f * ret);
+}

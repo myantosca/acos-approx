@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
   float e = 0.0f;
   float f = 0.0f;
   float g = 0.0f;
+  float h = 0.0f;
   fprintf(stdout,
 	  "x\t"
 	  "acos\t"
@@ -37,12 +38,14 @@ int main(int argc, char *argv[])
 	  "nvidia2\t"
 	  "nvidia3\t"
 	  "nvidia4\t"
+	  "nvidia5\t"
 	  "d_binomial\t"
 	  "d_nvidia0\t"
 	  "d_nvidia1\t"
 	  "d_nvidia2\t"
 	  "d_nvidia3\n"
 	  "d_nvidia4\n"
+	  "d_nvidia5\n"
 	  );
   while (x <= 1.0f) {
     a = acosf(x);
@@ -52,8 +55,9 @@ int main(int argc, char *argv[])
     e = acos_nvidia2(x);
     f = acos_nvidia3(x);
     g = acos_nvidia4(x);
-    fprintf(stdout, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
-	    x, a, b, c, d, e, f, g, a - b, a - c, a - d, a - e, a - f, a - g);
+    h = acos_nvidia5(x);
+    fprintf(stdout, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
+	    x, a, b, c, d, e, f, g, h, a - b, a - c, a - d, a - e, a - f, a - g, a - h);
     x += step;
   }
   return 0;

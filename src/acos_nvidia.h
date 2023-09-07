@@ -25,4 +25,7 @@ float acos_nvidia3(float x);
 /// With -march=native, the assembly is the same as generated for acos_nvidia3.
 float acos_nvidia4(float x);
 
+/// Iteration 5: Move rotation predicate to end after storing the initial value of x.
+float acos_nvidia5(float x);
+
 #endif
