@@ -21,4 +21,8 @@ float acos_nvidia2(float x);
 /// Iteration 3: Reduced arithmetic by merging last subtraction and return operation.
 float acos_nvidia3(float x);
 
+/// Iteration 4: Try to induce the compiler to use FMA. Requires -march=native.
+/// With -march=native, the assembly is the same as generated for acos_nvidia3.
+float acos_nvidia4(float x);
+
 #endif

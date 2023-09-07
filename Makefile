@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O2 -g
+CFLAGS=-O2 -g -march=native
 LDFLAGS=-lm
 SRCDIR=./src
 EXENAME=acos-approx
