@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <math.h>
+#include "acos_nvidia.h"
 
 /// 0x0000555555555500 <+0>:     endbr64
 /// 0x0000555555555504 <+4>:     sub    $0x18,%rsp
