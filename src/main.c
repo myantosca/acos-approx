@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
   float f = 0.0f;
   float g = 0.0f;
   float h = 0.0f;
+  float i = 0.0f;
   fprintf(stdout,
 	  "x\t"
 	  "acos\t"
@@ -56,8 +57,9 @@ int main(int argc, char *argv[])
     f = acos_nvidia3(x);
     g = acos_nvidia4(x);
     h = acos_nvidia5(x);
-    fprintf(stdout, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
-	    x, a, b, c, d, e, f, g, h, a - b, a - c, a - d, a - e, a - f, a - g, a - h);
+    i = acos_nvidia6(x);
+    fprintf(stdout, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
+	    x, a, b, c, d, e, f, g, h, i, a - b, a - c, a - d, a - e, a - f, a - g, a - h, a - i);
     x += step;
   }
   return 0;

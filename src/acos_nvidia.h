@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <immintrin.h>
 
 /// Source: https://developer.download.nvidia.com/cg/acos.html
 ///
@@ -27,5 +28,9 @@ float acos_nvidia4(float x);
 
 /// Iteration 5: Move rotation predicate to end after storing the initial value of x.
 float acos_nvidia5(float x);
+
+/// Iteration 6: Use Intel intrinsics for sqrt. Increase optimization to -O3.
+/// cf. https://stackoverflow.com/questions/59644197/inverse-square-root-intrinsics
+float acos_nvidia6(float x);
 
 #endif

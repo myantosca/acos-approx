@@ -327,3 +327,43 @@ float acos_nvidia5(float x) {
   ret *= sqrtf(1.0f - x);
   return ret + (float)(x0 < 0.0f) * (3.14159265358979f - 2.0f * ret);
 }
+
+
+
+
+// Source: https://stackoverflow.com/questions/59644197/inverse-square-root-intrinsics
+inline float _mm_sqrt32(const float f)
+{
+    __m128 temp = _mm_set_ss(f);
+    temp = _mm_sqrt_ss(temp);
+    return _mm_cvtss_f32(temp);
+}
+
+/// 0x0000555555555a10 <+0>:     endbr64
+/// 0x0000555555555a14 <+4>:     vandps 0x774(%rip),%xmm0,%xmm1        # 0x555555556190
+/// 0x0000555555555a1c <+12>:    vmovss 0x750(%rip),%xmm2        # 0x555555556174
+/// 0x0000555555555a24 <+20>:    vmovss 0x718(%rip),%xmm3        # 0x555555556144
+/// 0x0000555555555a2c <+28>:    vfmadd213ss 0x747(%rip),%xmm1,%xmm2        # 0x55555555617c
+/// 0x0000555555555a35 <+37>:    vfmadd213ss 0x742(%rip),%xmm1,%xmm2        # 0x555555556180
+/// 0x0000555555555a3e <+46>:    vfmadd213ss 0x73d(%rip),%xmm1,%xmm2        # 0x555555556184
+/// 0x0000555555555a47 <+55>:    vsubss %xmm1,%xmm3,%xmm1
+/// 0x0000555555555a4b <+59>:    vinsertps $0xe,%xmm1,%xmm1,%xmm1
+/// 0x0000555555555a51 <+65>:    vsqrtss %xmm1,%xmm1,%xmm1
+/// 0x0000555555555a55 <+69>:    vmulss %xmm2,%xmm1,%xmm1
+/// 0x0000555555555a59 <+73>:    vxorps %xmm2,%xmm2,%xmm2
+/// 0x0000555555555a5d <+77>:    vcmpltss %xmm2,%xmm0,%xmm0
+/// 0x0000555555555a62 <+82>:    vblendvps %xmm0,%xmm3,%xmm2,%xmm2
+/// 0x0000555555555a68 <+88>:    vmovss 0x700(%rip),%xmm0        # 0x555555556170
+/// 0x0000555555555a70 <+96>:    vfnmadd213ss 0x6ff(%rip),%xmm1,%xmm0        # 0x555555556178
+/// 0x0000555555555a79 <+105>:   vfmadd132ss %xmm2,%xmm1,%xmm0
+/// 0x0000555555555a7e <+110>:   ret
+float acos_nvidia6(float x) {
+  float x0 = x;
+  x = fabsf(x);
+  float ret = -0.0187293f;
+  ret = ret * x + 0.0742610f;
+  ret = ret * x - 0.2121144f;
+  ret = ret * x + 1.5707288f;
+  ret *= _mm_sqrt32(1.0f - x);
+  return ret + (float)(x0 < 0.0f) * (3.14159265358979f - 2.0f * ret);
+}
