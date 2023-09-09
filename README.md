@@ -602,6 +602,9 @@ results inaccurate enough to dismiss. Searching for `acos` through the
 kcachegrind visualization of the callgrind log gave the following percentages
 of total CPU time spent.
 
+NB: The relative percentages are low because the bulk of time is spent in
+`printf` calls to produce the tabulation used in the graphs above.
+
 |Incl. | Self. | Called | Function                    | Location                                    |
 |------|-------|--------|-----------------------------|---------------------------------------------|
 |1.69  | 1.69  | 19,999 | `acos_binomial`             | acos-approx: `acos_binomial.c`              |
