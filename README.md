@@ -626,9 +626,9 @@ where time and memory costs come at a premium.
 
 ## References
 
-[1] P. Maragos, J. F. Kaiser, and T. F. Quatieri, “Energy separation in signal
-modulations with application to speech analysis,” vol. 41, no. 10, pp.
-3024–3051.
+[1] P. Maragos, J. F. Kaiser, and T. F. Quatieri, “Energy Separation in Signal Modulations With
+Application to Speech Analysis,” IEEE Trans. Signal Process., vol. 41, no. 10, pp. 3024–3051,
+Oct. 1993.
 
 [2] https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Infinite_series
 
