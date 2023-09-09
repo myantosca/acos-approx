@@ -40,13 +40,15 @@ int main(int argc, char *argv[])
 	  "nvidia3\t"
 	  "nvidia4\t"
 	  "nvidia5\t"
+	  "nvidia6\t"
 	  "d_binomial\t"
 	  "d_nvidia0\t"
 	  "d_nvidia1\t"
 	  "d_nvidia2\t"
-	  "d_nvidia3\n"
-	  "d_nvidia4\n"
-	  "d_nvidia5\n"
+	  "d_nvidia3\t"
+	  "d_nvidia4\t"
+	  "d_nvidia5\t"
+	  "d_nvidia6\n"
 	  );
   while (x <= 1.0f) {
     a = acosf(x);
