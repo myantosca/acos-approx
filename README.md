@@ -1,8 +1,8 @@
 # Fast Approximation of `acosf`
 
 In the course of looking for optimizations to a data processing pipeline
-I had constructed for my research, I found that my implementation of Potamianos'
-and Maragos' Discrete Energy Separation Algorithm (DESA)[1] proved a
+I had constructed for my research, I found that my implementation of Potamianos',
+Maragos', and Quatieri's Discrete Energy Separation Algorithm (DESA)[1] proved a
 significant bottleneck, occupying between 30-40% of total processing time.
 Within the DESA stage, the standard `acosf` function provided by `<math.h>`
 accounted for a seemingly inordinate percentage of total CPU time (around 15%).
